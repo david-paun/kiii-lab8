@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: 182041-namespace
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: 182041-manifest
+  namespace: 182041-namespace
+spec:
+  replicas: 5
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 2
+      maxUnavailable: 1
+  selector:
+    matchLabels:
+      app: pod-182041
+  template:
+    metadata:
+      labels:
+        app: pod-182041
+    spec:
+      containers:
+      - name: 182041-container
+        image: paunovskidavid/lab8:1.0
+        ports:
+        - containerPort: 8080
+
