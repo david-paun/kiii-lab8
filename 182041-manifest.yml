@@ -27,5 +27,5 @@ spec:
       - name: 182041-container
         image: paunovskidavid/lab8:1.0
         ports:
-        - containerPort: 8080
+        - containerPort: 80
 
